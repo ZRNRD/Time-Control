@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    width: 80vw;
+    margin: 0 auto;
+}
+.time-control{
+    background: #eee;
+    height: 100vh;
+}
+
+.time-control button{
+    border: none;
+    font-size: 25px;
+}
+.time-control button:hover{
+    cursor: pointer;
+    background: rgb(255, 170, 73);
+}
+
+.time-control__header{
+    text-align: center;
+    font-size: 40px;
+}
+
+.time-control__menu{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.menu-items{
+    display: flex;
+    justify-content: center;
+}
+
+.menu-item{
+    width: 50%;
+    height: 50px;
+    background: rgb(100, 100, 100);
+}
+
+.menu-show{
+    background: rgb(138, 138, 138);
+    height: 50px;
+}
