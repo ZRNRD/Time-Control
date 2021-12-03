@@ -110,5 +110,6 @@
     border: none;
     height: 40px;
     width: 150px;
+    border-radius: 5px;
     background: rgb(138, 138, 138);
 }
