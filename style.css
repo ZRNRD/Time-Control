@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+.hide{
+    display: none;
+}
+
 .container{
     width: 80vw;
     margin: 0 auto;
@@ -12,13 +16,16 @@
     height: 100vh;
 }
 
-.time-control button{
-    border: none;
+.time-control input{
     font-size: 25px;
 }
-.time-control button:hover{
+.time-control input:hover{
     cursor: pointer;
     background: rgb(255, 170, 73);
+}
+.time-control input:active{
+    cursor: pointer;
+    box-shadow: inset 0px 0px 10px rgba(0,0,0,0.5);
 }
 
 .time-control__header{
@@ -40,10 +47,55 @@
 .menu-item{
     width: 50%;
     height: 50px;
+    border: none;
     background: rgb(100, 100, 100);
+}
+.menu-item:first-child{
+    border-right: 1px solid black;
 }
 
 .menu-show{
     background: rgb(138, 138, 138);
+    border: none;
     height: 50px;
+}
+
+.time-control__content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+}
+
+.timer__nums{
+    display: flex;
+    justify-content: center;
+}
+
+.timer__nums div{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.timer__nums input{
+    border: 1px solid rgb(124, 124, 124);
+}
+
+.num{
+    text-align: center;
+    font-size: 100px;
+}
+
+.timer__buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.timer__buttons input{
+    border: none;
+    height: 40px;
+    width: 150px;
+    background: rgb(138, 138, 138);
 }

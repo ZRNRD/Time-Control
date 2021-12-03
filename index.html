@@ -14,11 +14,40 @@
 
             <div class="time-control__menu">
                 <div class="menu-items">
-                    <button class="menu-item">Таймер</button>
-                    <button class="menu-item">Секундомер</button>
+                    <input type="button" class="menu-item" value="Таймер">
+                    <input type="button" class="menu-item" value="Секундомер">
                 </div>
-                <button class="menu-show">Меню</button>
+                <input type="button" class="menu-show" value="Меню">
             </div><!-- ./time-control__menu -->
+
+           <div class="time-control__content">
+               <div class="timer">
+                   <div class="timer__nums">
+                       <div class="timer__hours">
+                            <input type="button" class="num__up" value="&#5169;">
+                            <p class="num">00</p>
+                            <input type="button" class="num__down" value="&#5167;">
+                            <p>часы</p>
+                       </div>
+                       <div class="timer__minutes">
+                            <input type="button" class="num__up" value="&#5169;">
+                            <p class="num">00</p>
+                            <input type="button" class="num__down" value="&#5167;">
+                            <p>минуты</p>
+                       </div>
+                       <div class="timer__seconds">
+                            <input type="button" class="num__up" value="&#5169;">
+                            <p class="num">00</p>
+                            <input type="button" class="num__down" value="&#5167;">
+                            <p>секунды</p>
+                       </div>
+                   </div>
+                   <div class="timer__buttons">
+                       <input type="button" class="timer__start" value="ПУСК">
+                   </div>
+                </div>
+               <div class="stopwatch hide">Секундомер</div>
+           </div>
 
         </div><!-- ./time-control -->
     </div>
