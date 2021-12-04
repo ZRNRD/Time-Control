@@ -49,7 +49,7 @@
 .menu-items{
     display: flex;
     justify-content: center;
-    height: 1px;
+    height: 0px;
     transition: all .3s ease;
 }
 .menu-items_show{
@@ -88,17 +88,21 @@
 .timer__nums{
     display: flex;
     justify-content: center;
+    
 }
 
 .timer__nums div{
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
     margin: 20px;
 }
 
 .timer__nums input{
     border: 1px solid rgb(124, 124, 124);
+    height: 70px;
+    width: 70px;
 }
 
 .num{
@@ -144,6 +148,7 @@
 .timer-alarm__stop{
     margin-top: 40px;
     border: 1px solid rgb(124, 124, 124);
+    border-radius: 5px;
 }
 
 .timer-alarm_show{
@@ -168,5 +173,45 @@
     }
     100%{
         transform: rotate(0deg);
+    }
+}
+
+/* Media */
+
+@media (max-width: 480px){
+    .container{
+        width: 100vw;
+    }
+    .num{
+        font-size: 50px;
+    }
+    .timer__buttons input{
+        width: 100px;
+    }
+}
+@media (max-width: 340px){
+    .timer__nums input{
+        height: 30px;
+        width: 30px;
+        font-size: 25px;
+    }
+}
+
+@media (max-height: 420px){
+    .num{
+        font-size: 30px;
+    }
+    .timer__buttons input{
+        font-size: 15px;
+    }
+    .timer__nums input{
+        height: 30px;
+        width: 30px;
+        font-size: 25px;
+    }
+}
+@media (max-height: 310px){
+    .time-control__header{
+        font-size: 25px;
     }
 }
