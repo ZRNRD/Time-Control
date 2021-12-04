@@ -22,6 +22,7 @@
 .time-control input{
     font-size: 25px;
     height: 50px;
+    transition: all .3s ease;
 }
 .time-control input:hover{
     cursor: pointer;

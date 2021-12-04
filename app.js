@@ -38,7 +38,40 @@ document.querySelector('.menu-items').addEventListener("click",(e)=>{
         })
     }
 })
+/* Взаимодействие с таймером */
 
-/* let hours = 0;
+let hours = 0;
 let minutes = 0;
-let seconds = 0; */
+let seconds = 0;
+
+document.querySelector(".timer__nums").addEventListener("click", (e)=>{
+    if(e.target.classList.contains("num__up") && e.target.parentNode.classList.contains("timer__hours")){
+        hours--;
+        (hours < 0) && (hours = 59)
+        e.target.nextElementSibling.innerHTML = getCorrectNum(hours)
+    }else if(e.target.classList.contains("num__down") && e.target.parentNode.classList.contains("timer__hours")){
+        hours++;
+        (hours > 59) && (hours = 00)
+        e.target.previousElementSibling.innerHTML = getCorrectNum(hours)
+    }else if(e.target.classList.contains("num__up") && e.target.parentNode.classList.contains("timer__minutes")){
+        minutes--;
+        (minutes < 0) && (minutes = 59)
+        e.target.nextElementSibling.innerHTML = getCorrectNum(minutes)
+    }else if(e.target.classList.contains("num__down") && e.target.parentNode.classList.contains("timer__minutes")){
+        minutes++;
+        (minutes > 59) && (minutes = 00)
+        e.target.previousElementSibling.innerHTML = getCorrectNum(minutes)
+    }else if(e.target.classList.contains("num__up") && e.target.parentNode.classList.contains("timer__seconds")){
+        seconds--;
+        (seconds < 0) && (seconds = 59)
+        e.target.nextElementSibling.innerHTML = getCorrectNum(seconds)
+    }else if(e.target.classList.contains("num__down") && e.target.parentNode.classList.contains("timer__seconds")){
+        seconds++;
+        (seconds > 59) && (seconds = 00)
+        e.target.previousElementSibling.innerHTML = getCorrectNum(seconds)
+    }
+})
+
+function getCorrectNum(num){
+    return num < 10 ? "0" + num : num;
+}
