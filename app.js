@@ -8,6 +8,7 @@ document.querySelector('.menu-items').addEventListener("click",(e)=>{
     const timeControlHeader = document.querySelector(".time-control__header");
     const timer = document.querySelector(".timer");
     const stopwatch = document.querySelector(".stopwatch");
+    
 
     if(e.target.value === "Таймер"){
 
@@ -77,6 +78,8 @@ document.querySelector(".timer__nums").addEventListener("click", (e)=>{
 const timerStart = document.querySelector(".timer__start");
 const timerCancel = document.querySelector(".timer__cancel");
 const timerPause = document.querySelector(".timer__pause");
+const timerAlarmStop = document.querySelector(".timer-alarm__stop");
+const timerAlarmIcon = document.querySelector(".timer-alarm__icon")
 
 timerStart.addEventListener("click", (e)=>{
     e.currentTarget.classList.add("hide")
@@ -84,7 +87,7 @@ timerStart.addEventListener("click", (e)=>{
     timerCancel.classList.remove("hide")
     timerPause.classList.remove("hide")
 
-    blockButtons([".timer__cancel", ".timer__pause"])
+    blockButtons([".timer__cancel", ".timer__pause", ".timer-alarm__stop"])
     startTimer()
 
 })
@@ -100,18 +103,26 @@ timerCancel.addEventListener("click", (e)=>{
 })
 
 timerPause.addEventListener("click", (e)=>{
-    pauseTimer()
+    
 
     if(e.currentTarget.value === "ПАУЗА"){
+        pauseTimer()
         e.currentTarget.value = "ДАЛЕЕ"
+        
     }else if(e.currentTarget.value === "ДАЛЕЕ"){
-        e.currentTarget.value = "ПАУЗА"
         startTimer()
+        e.currentTarget.value = "ПАУЗА"
+        
     }
 
     unblockButtons()
 })
 
+timerAlarmStop.addEventListener("click", ()=>{
+    cancelTimer();
+    document.querySelector(".timer-alarm").classList.remove("timer-alarm_show")
+
+})
 
 function getCorrectNum(num){
     return num < 10 ? "0" + num : num;
@@ -135,15 +146,35 @@ function unblockButtons(){
 
     
 let interval = null;
+let ringingBellInterval = null;
+
+let bell = new Audio("./sound/bell.mp3");
+
+function ringingBell(){
+    bell.pause();
+    bell.play();
+    
+    ringingBellInterval = setInterval(()=>{
+        bell.pause();
+        bell.play();
+    }, 1000)
+}
+
+function stopRinging(){
+    bell.pause();
+    window.clearInterval(ringingBellInterval);
+    ringingBellInterval = null;
+}
 
 function startTimer(){
-    let bell = new Audio("./sound/bell.mp3");
+    
     if(hours === 0 && minutes === 0 && seconds === 0){
-        bell.play();
+        ringingBell();
         cancelTimer()
         return;
     }
 
+    timerAlarmIcon.classList.add("ringing-bell")
 
     interval = setInterval(()=>{
         seconds--;
@@ -161,8 +192,9 @@ function startTimer(){
         document.querySelector(".timer__seconds").querySelector(".num").innerText = getCorrectNum(seconds)
 
         if(hours === 0 && minutes === 0 && seconds === 0){
-            bell.play();
-            cancelTimer();
+            ringingBell()
+            timerAlarmIcon.classList.add("ringing-bell")
+            document.querySelector(".timer-alarm").classList.add("timer-alarm_show")
         }
         
     },1000)
@@ -180,6 +212,7 @@ function helper(num){
 
 function cancelTimer(){
     pauseTimer()
+    stopRinging()
 
     hours = 0;
     minutes = 0;
@@ -193,6 +226,8 @@ function cancelTimer(){
     timerCancel.classList.add("hide")
     timerPause.classList.add("hide")
 
+    timerAlarmIcon.classList.remove("ringing-bell")
+
     
 }
 
@@ -202,3 +237,4 @@ function pauseTimer(){
     timerPause.value = "ПАУЗА"
     unblockButtons()
 }
+

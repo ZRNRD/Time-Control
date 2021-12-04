@@ -7,6 +7,8 @@
     display: none;
 }
 
+
+
 .container{
     width: 80vw;
     margin: 0 auto;
@@ -83,7 +85,6 @@
 }
 
 /* timer */
-
 .timer__nums{
     display: flex;
     justify-content: center;
@@ -117,4 +118,55 @@
     margin: 0 10px;
     border-radius: 5px;
     background: rgb(138, 138, 138);
+}
+
+.timer-alarm{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    border: 1px solid #eee;
+    width: 70vw;
+    height: 70vh;
+    transition: all .4s ease;
+    transform: scale(0);
+    
+}
+
+.timer-alarm__icon{
+    width: 80px;
+    
+    
+}
+
+.timer-alarm__stop{
+    margin-top: 40px;
+    border: 1px solid rgb(124, 124, 124);
+}
+
+.timer-alarm_show{
+    transform: scale(1);
+}
+.ringing-bell{
+    animation: Ringing 1s ease-in-out infinite;
+}
+
+@keyframes Ringing{
+    0%{
+        transform: rotate(0deg);
+    }
+    25%{
+        transform: rotate(45deg);
+    }
+    50%{
+        transform: rotate(-45deg);
+    }
+    75%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
 }
