@@ -22,7 +22,7 @@
 .time-control input{
     font-size: 25px;
     height: 50px;
-    transition: all .3s ease;
+    transition: all .1s ease;
 }
 .time-control input:hover{
     cursor: pointer;
@@ -114,6 +114,7 @@
     border: none;
     height: 40px;
     width: 150px;
+    margin: 0 10px;
     border-radius: 5px;
     background: rgb(138, 138, 138);
 }
