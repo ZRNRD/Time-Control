@@ -107,15 +107,17 @@ timerPause.addEventListener("click", (e)=>{
 
     if(e.currentTarget.value === "ПАУЗА"){
         pauseTimer()
+        unblockButtons()
         e.currentTarget.value = "ДАЛЕЕ"
         
     }else if(e.currentTarget.value === "ДАЛЕЕ"){
         startTimer()
+        blockButtons([".timer__cancel", ".timer__pause", ".timer-alarm__stop"])
         e.currentTarget.value = "ПАУЗА"
         
     }
 
-    unblockButtons()
+    
 })
 
 timerAlarmStop.addEventListener("click", ()=>{
