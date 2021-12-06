@@ -135,13 +135,11 @@ const stopwatchInterval = document.querySelector(".stopwatch-interval");
 const stopwatchIntervalsList = document.querySelector(".stopwatch-intervals-list");
 const stopwatchTime = document.querySelector(".stopwatch-time")
 
-stopwatchStart.addEventListener("click",(e)=>{
-    startStopwatch();
-});
+stopwatchStart.addEventListener("click", startStopwatch);
 
-stopwatchCancel.addEventListener("click", ()=>{
-    cancelStopwatch();
-})
+stopwatchCancel.addEventListener("click", cancelStopwatch)
+
+stopwatchInterval.addEventListener("click", addStopwatchInterval)
 
 
 /* Все функции */
@@ -313,4 +311,6 @@ function cancelStopwatch(){
     stopwatchTime.innerText = `${getCorrectNum(stopwatchMinutes)}:${getCorrectNum(stopwatchSeconds)}:${getCorrectNum(stopwatchTenMilliseconds)}` 
 }
 
-
+function addStopwatchInterval(){
+    stopwatchIntervalsList.innerHTML =`<li> ${stopwatchTime.innerText} </li>` + stopwatchIntervalsList.innerHTML
+}
