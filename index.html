@@ -58,17 +58,25 @@
 
                    
                 </div><!-- ./timer -->
-               <div class="stopwatch hide">
-                   <div class="stopwatch-body">
-                        <div class="stopwatch-arrow"></div>
+                <div class="stopwatch hide">
+                    
+                   <div class="stopwatch-main">
+                        <div class="stopwatch-body">
+                            <div class="stopwatch-arrow"></div>
+                        </div>
+                        <p class="stopwatch-time">00:00:00</p>
+                        <div class="stopwatch-buttons">
+                            <input type="button" class="stopwatch-start" value="СТАРТ">
+                            <input type="button" class="stopwatch-cancel hide" value="СБРОС">
+                            <input type="button" class="stopwatch-interval hide" value="ИНТЕРВАЛ">
+                        </div>
+                   </div> <!-- ./stopwatch-main -->
+                   
+                   <div>
+                        <p class="stopwatch-intervals-header">Интервалы:</p>
+                        <ol class="stopwatch-intervals-list" reversed></ol>
                    </div>
-                   <p class="stopwatch-time">00:00:00</p>
-                   <div class="stopwatch-buttons">
-                       <input type="button" class="stopwatch-start" value="СТАРТ">
-                       <input type="button" class="stopwatch-cancel hide" value="СБРОС">
-                       <input type="button" class="stopwatch-interval hide" value="ИНТЕРВАЛ">
-                   </div>
-                   <ol class="stopwatch-intervals-list" reversed></ol>
+                   
                 </div><!-- ./stopwatch -->
            </div>
 
