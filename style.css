@@ -176,6 +176,57 @@
     }
 }
 
+/* stopwatch */
+.stopwatch{
+    border: 1px solid black;
+    
+}
+.stopwatch-body{
+    position: relative;
+    width: 400px;
+    height: 400px;
+    background: url("./img/Stopwatch.jpg") no-repeat;
+    background-size: cover;
+}
+
+.stopwatch-arrow{
+    position: absolute;
+    left: 24.5%;
+    top: 37%;
+    width: 50%;
+    height: 50%;
+}
+
+.stopwatch-arrow::before{
+    content: "";
+    position: absolute;
+    left: 48.5%;
+    height: 48%;
+    border: 3px solid red;
+}
+
+.stopwatch-buttons{
+    display: flex;
+    justify-content: center;
+}
+.stopwatch-buttons input{
+    border: none;
+    height: 40px;
+    width: 150px;
+    margin: 0 10px;
+    border-radius: 5px;
+    background: rgb(138, 138, 138);
+}
+
+.spin-arrow{
+    animation: spin 5s linear infinite;
+}
+
+@keyframes spin{
+    100%{
+        transform: rotate(360deg);
+    }
+}
 /* Media */
 
 @media (max-width: 480px){

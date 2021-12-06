@@ -126,6 +126,24 @@ timerAlarmStop.addEventListener("click", ()=>{
 
 })
 
+/* Взаимодействие с секундомером */
+
+const stopwatchStart = document.querySelector(".stopwatch-start");
+const stopwatchCancel = document.querySelector(".stopwatch-cancel");
+const stopwatchRound = document.querySelector(".stopwatch-round");
+
+stopwatchStart.addEventListener("click",(e)=>{
+    startStopwatch();
+});
+
+stopwatchCancel.addEventListener("click", ()=>{
+    cancelStopwatch();
+})
+
+
+/* Все функции */
+
+/* Функции для таймера */
 function getCorrectNum(num){
     return num < 10 ? "0" + num : num;
 }
@@ -240,3 +258,20 @@ function pauseTimer(){
     unblockButtons()
 }
 
+/* Функции для секундомера */
+
+function startStopwatch(){
+    document.querySelector(".stopwatch-arrow").classList.add("spin-arrow");
+
+    stopwatchStart.classList.add("hide");
+    stopwatchCancel.classList.remove("hide");
+    stopwatchRound.classList.remove("hide");
+}
+
+function cancelStopwatch(){
+    document.querySelector(".stopwatch-arrow").classList.remove("spin-arrow");
+
+    stopwatchStart.classList.remove("hide");
+    stopwatchCancel.classList.add("hide");
+    stopwatchRound.classList.add("hide");
+}
