@@ -130,7 +130,10 @@ timerAlarmStop.addEventListener("click", ()=>{
 
 const stopwatchStart = document.querySelector(".stopwatch-start");
 const stopwatchCancel = document.querySelector(".stopwatch-cancel");
-const stopwatchRound = document.querySelector(".stopwatch-round");
+const stopwatchInterval = document.querySelector(".stopwatch-interval");
+
+const stopwatchIntervalsList = document.querySelector(".stopwatch-intervals-list");
+const stopwatchTime = document.querySelector(".stopwatch-time")
 
 stopwatchStart.addEventListener("click",(e)=>{
     startStopwatch();
@@ -259,13 +262,36 @@ function pauseTimer(){
 }
 
 /* Функции для секундомера */
+let stopwatchMinutes = 0;
+let stopwatchSeconds = 0;
+let stopwatchTenMilliseconds = 0;
+
+let stopwatchIntervalForTime = null;
 
 function startStopwatch(){
     document.querySelector(".stopwatch-arrow").classList.add("spin-arrow");
+    stopwatchIntervalsList.innerHTML = "";
 
     stopwatchStart.classList.add("hide");
     stopwatchCancel.classList.remove("hide");
-    stopwatchRound.classList.remove("hide");
+    stopwatchInterval.classList.remove("hide");
+
+    blockButtons([".stopwatch-cancel", ".stopwatch-interval"])
+
+    stopwatchIntervalForTime = setInterval(()=>{
+        stopwatchTenMilliseconds++;
+        if(stopwatchTenMilliseconds > 99){
+            stopwatchTenMilliseconds = 0;
+            stopwatchSeconds++;
+        }
+        if(stopwatchSeconds > 59){
+            stopwatchSeconds = 0;
+            stopwatchMinutes++;
+        }
+
+        stopwatchTime.innerText = `${getCorrectNum(stopwatchMinutes)}:${getCorrectNum(stopwatchSeconds)}:${getCorrectNum(stopwatchTenMilliseconds)}`
+        
+    },10)
 }
 
 function cancelStopwatch(){
@@ -273,5 +299,18 @@ function cancelStopwatch(){
 
     stopwatchStart.classList.remove("hide");
     stopwatchCancel.classList.add("hide");
-    stopwatchRound.classList.add("hide");
+    stopwatchInterval.classList.add("hide");
+
+    unblockButtons()
+
+    window.clearInterval(stopwatchIntervalForTime);
+    stopwatchIntervalForTime = null;
+
+    stopwatchMinutes = 0;
+    stopwatchSeconds = 0;
+    stopwatchTenMilliseconds = 0;
+
+    stopwatchTime.innerText = `${getCorrectNum(stopwatchMinutes)}:${getCorrectNum(stopwatchSeconds)}:${getCorrectNum(stopwatchTenMilliseconds)}` 
 }
+
+
